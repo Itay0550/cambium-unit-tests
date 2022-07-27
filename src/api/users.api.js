@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     userServices.createUser(req, res);
 }).post('/login', (req, res) => {
     userServices.login(req, res);
-}).delete('/:userId',isAuth, (req, res) => {
+}).delete('/:userId', isAuth, (req, res) => {
     userServices.deleteUser(req, res);
 });
 

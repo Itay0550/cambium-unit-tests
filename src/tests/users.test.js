@@ -63,11 +63,20 @@ describe('Users Tests', () => {
             });
     })
 
+    it("Delete user By Id(user create from first test) without token", (done) => {
+        chai.request(server)
+            .delete(`api/users/${userId}`)
+            .end((err, response) => {
+                expect(response.status).to.equal(404);
+               
+                done();
+            });
+    });
+
     it("Delete user By Id(user create from first test", (done) => {
         chai.request(server)
             .delete(`api/users/${userId}`)
             .set({ Authorization: token })
-            .send(user)
             .end((err, response) => {
                 expect(response.status).to.equal(200);
                 expect(response).to.have.property('body');
@@ -75,5 +84,7 @@ describe('Users Tests', () => {
                 done();
             });
     });
+
+
 
 })
